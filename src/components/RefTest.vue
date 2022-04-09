@@ -27,7 +27,7 @@ export default {
     });
     const userInfo2 = reactive({
       username: "jack",
-      age: 20,
+      age: 22,
       type: "student",
       reverseType: computed(() => {
         return userInfo2.type.split("").reverse().join("");
