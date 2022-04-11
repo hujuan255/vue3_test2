@@ -10,11 +10,29 @@
   <h2>姓名：{{ username }}</h2>
   <h2>年龄：{{ age }}</h2>
   <h2>职务：{{ type }}</h2>
+  <h2>"----------------------------------------------"</h2>
+  <User :username="username" :age="age"></User>
+  <h2>"----------------------------------------------"</h2>
+  <Student></Student>
 </template>
 
 <script>
-import { ref, reactive, toRefs, computed, watchEffect, watch } from "vue";
+import {
+  ref,
+  reactive,
+  toRefs,
+  computed,
+  watchEffect,
+  watch,
+  provide,
+} from "vue";
+import User from "./user/User.vue";
+import Student from "./user/Student.vue";
 export default {
+  components: {
+    User,
+    Student,
+  },
   setup() {
     const num = ref(0);
     const changeNum = () => {
@@ -50,6 +68,12 @@ export default {
       console.log(newNum, prevNum);
       console.log("当num或者userInfo.type变化时，执行watch函数");
     });
+    //使用provide
+    const student = reactive({
+      name: "小航",
+      className: "三年二班",
+    });
+    provide("student", student);
     return {
       num,
       changeNum,
