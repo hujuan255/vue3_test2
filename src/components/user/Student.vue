@@ -5,6 +5,7 @@
 <script>
 import { inject } from "vue";
 export default {
+  name: "Student",
   setup() {
     const { name, className } = inject("student");
     return {

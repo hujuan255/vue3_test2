@@ -6,6 +6,7 @@
 <script>
 import { ref } from "vue";
 export default {
+  name: "User",
   props: ["username", "age"],
   setup(props) {
     const description = ref(props.username + "的年龄是：" + props.age);
