@@ -8,6 +8,9 @@ import RepeatParams from "../components/RepeatParams.vue";
 import Henban from "../components/user/Henban.vue";
 import Shuban from "../components/user/Shuban.vue";
 import Page from "../components/page.vue"
+import ShopMain from "../components/shop/ShopMain.vue"
+import ShopFooter from "../components/shop/ShopFooter.vue"
+import ShopTop from "../components/shop/ShopTop.vue"
 //定义路由
 const routes = [
   {
@@ -25,12 +28,38 @@ const routes = [
   //*是可有可没有，也可以是任意多个参数
   //?有或者没有，不可以重复
   { path: '/repeatparams/:id?', component: RepeatParams },
-  { path: '/page', component: Page }
-
+  {
+    path: '/page', component: Page,
+    beforeEnter: (to, from, next) => {
+      console.log('进入路由时触发');
+      next();
+    }
+  },
+  // 命名视图，同级展示多个组件 
+  {
+    path: '/shop',
+    //alias: '/shangcheng',//别名
+    alias: ['/shangcheng', '/gouwu'],//多个别名
+    components: {
+      default: ShopMain,
+      ShopFooter: ShopFooter,
+      ShopTop: ShopTop
+    }
+  },
+  //重定向
+  {
+    path: '/mall',
+    redirect: '/shop'
+  }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+//全局守卫
+router.beforeEach((to, from, next) => {
+  console.log("跳转页面前")
+  next();
 })
 export default router;
