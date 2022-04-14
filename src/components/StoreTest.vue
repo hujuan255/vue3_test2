@@ -8,6 +8,7 @@
       {{ item.text }}
     </li>
   </ul>
+  <h1>{{ store.state.message }}</h1>
 </template>
 <script>
 export default {

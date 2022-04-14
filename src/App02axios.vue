@@ -18,13 +18,17 @@ export default {
     store,
   },
   setup() {
-    let userInfoApi = "user/userinfo";
-    axios.get(userInfoApi).then((result) => {
-      store.setMessage(result.data.username + result.data.age);
-      console.log(result);
-    });
-    let loginApi = "/login?username=admin&password=123456";
-    axios.get(loginApi).then((result) => {
+    let api = "https://api.apiopen.top/getJoke?page=1&count=10&type=text";
+    //方法一、fetch
+    // fetch(api)
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     store.setDzList(result.result);
+    //     console.log(result);
+    //   });
+    //方法二、axios
+    axios.get(api).then((result) => {
+      store.setDzList(result.data.result);
       console.log(result);
     });
   },
