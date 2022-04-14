@@ -11,6 +11,7 @@ import Page from "../components/page.vue"
 import ShopMain from "../components/shop/ShopMain.vue"
 import ShopFooter from "../components/shop/ShopFooter.vue"
 import ShopTop from "../components/shop/ShopTop.vue"
+import User from "../views/User.vue"
 //定义路由
 const routes = [
   {
@@ -45,6 +46,12 @@ const routes = [
       ShopFooter: ShopFooter,
       ShopTop: ShopTop
     }
+  },
+  //模块化管理vuex练习user
+  {
+    path: '/user',
+    name:'User',
+    component: User,
   },
   //重定向
   {
